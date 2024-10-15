@@ -1,0 +1,15 @@
+services:
+  restapi:
+    image: hr_monitor_backend
+    build: .
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    entrypoint: ["python3", "main.py"]
+    networks:
+      - hr_monitor_net
+networks:
+  hr_monitor_net:
+    external: true
